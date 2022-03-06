@@ -8,7 +8,7 @@ function drawMap(){
                     .attr('width', width)
                     .attr('height', height);
 
-    d3.json("municipis_Catalunya_s.geojson")
+    d3.json("https://raw.githubusercontent.com/mcocam/D3js_GeoJson_Mapshaper/master/municipis_Catalunya_s.geojson")
                     .then(d => {
                 
                         const projection = d3.geoMercator()
