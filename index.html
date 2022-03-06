@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <title>GeoJson with D3js</title>
+</head>
+
+<body>
+
+    <div class="container text">
+        <h2>Plot a simplified GeoJson with D3js</h2>
+        <p>This project shows a simple example about how to plot a GeoJson with <a href="https://d3js.org/" target="_blank">D3js</a>. The GeoJson file has been simplified with <a href="https://mapshaper.org/" target="_blank">MapShaper</a>, an amazing and easy tool to create low size, high quality vector data</p>
+    </div>
+
+    <div class="container-fluid cards">
+        <div class="row d-flex justify-content-around">
+
+            <div class="col-md-12 col-lg-6">
+                <div class="card">
+                    <h5 class="card-header">1) Get the SIG file</h5>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">Shapefile from ICGC</h6>
+                        <p class="card-text">For this example, we use the shapefile of municipality boundaries of Catalonia. </p>
+                        <p class="card-text">The used file is <i>divisions-administratives-v2r0-municipis-5000-20210701.shp</i> and its size is up to ~22MB</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://www.icgc.cat/en/Downloads/Vector-maps/Administrative-boundaries" class="card-link" target = "_blank"><i class="fas fa-link"></i>SHP</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h5 class="card-header">2) Reproject to WGS84</h5>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">With Qgis</h6>
+                        <p class="card-text">D3js expects a WGS84 coordinate system. So, if you are not sure about this point, just load the file on Qgis and save it in this format.</p>
+                        <p class="card-text">Now, the GeoJson file is up to nearly 63MB</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://www.qgis.org/en/site/" class="card-link" target = "_blank"><i class="fas fa-link"></i>Qgis</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h5 class="card-header">3) Simplify the shape</h5>
+                    <div class="card-body">
+                        <h6 class="card-subtitle mb-2 text-muted">With mapshaper</h6>
+                        <p class="card-text">In order to simplify the GIS file, mapshaper it is used. Upload your file, choose which algorithm to use and the percentage of reduction (0.5% in this case).</p>
+                        <p class="card-text">Then export it in GeoJson format and be sure to enter <b>gj2008</b> on the export field options.</p>
+                        <p class="card-text">Now, we finally get our file of about 600KB.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="https://mapshaper.org/" class="card-link" target = "_blank"><i class="fas fa-link"></i>MapShaper</a>
+                    </div>
+                </div>
+
+            </div>
+
+            
+        <div class="col-sm-11 col-lg-5 align-middle" id="map-container-1">
+                <svg id="cat_map"></svg>
+        </div>
+
+        </div>
+
+
+    </div>
+
+
+    <script src="map.js"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+</body>
+
+</html>
